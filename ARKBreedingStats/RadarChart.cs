@@ -302,7 +302,7 @@ namespace ARKBreedingStats
                     for (int r = 1; r <= 5; r++)
                     {
                         g.DrawString((_step * r).ToString("N0"), font,
-                            brush, _xm - 8, _ym - 30 + r * _maxR / 5);
+                            brush, _xm - 8, _ym - 10 + r * _maxR / 5);
                     }
                 }
 
