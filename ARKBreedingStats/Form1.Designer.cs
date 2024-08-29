@@ -2131,7 +2131,7 @@ namespace ARKBreedingStats
             this.groupBoxRadarChartExtractor.Controls.Add(this.radarChartExtractor);
             this.groupBoxRadarChartExtractor.Location = new System.Drawing.Point(837, 6);
             this.groupBoxRadarChartExtractor.Name = "groupBoxRadarChartExtractor";
-            this.groupBoxRadarChartExtractor.Size = new System.Drawing.Size(150, 163);
+            this.groupBoxRadarChartExtractor.Size = new System.Drawing.Size(213, 232);
             this.groupBoxRadarChartExtractor.TabIndex = 11;
             this.groupBoxRadarChartExtractor.TabStop = false;
             this.groupBoxRadarChartExtractor.Text = "Stat-Chart";
@@ -2142,7 +2142,7 @@ namespace ARKBreedingStats
             this.radarChartExtractor.Image = ((System.Drawing.Image)(resources.GetObject("radarChartExtractor.Image")));
             this.radarChartExtractor.Location = new System.Drawing.Point(3, 16);
             this.radarChartExtractor.Name = "radarChartExtractor";
-            this.radarChartExtractor.Size = new System.Drawing.Size(144, 144);
+            this.radarChartExtractor.Size = new System.Drawing.Size(200, 218);
             this.radarChartExtractor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.radarChartExtractor.TabIndex = 10;
             this.radarChartExtractor.TabStop = false;

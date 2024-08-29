@@ -301,8 +301,9 @@ namespace ARKBreedingStats
                 {
                     for (int r = 1; r <= 5; r++)
                     {
+                        SizeF textSize = g.MeasureString((_step * r).ToString("N0"), font);
                         g.DrawString((_step * r).ToString("N0"), font,
-                            brush, _xm - 8, _ym - 10 + r * _maxR / 5);
+                            brush, _xm - 8, _ym - textSize.Height + r * _maxR / 5);
                     }
                 }
 
