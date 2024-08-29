@@ -4,11 +4,24 @@ using System.IO;
 using System.Windows.Forms;
 using ARKBreedingStats.uiControls;
 using ARKBreedingStats.utils;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace ARKBreedingStats
 {
     static class Program
     {
+        // P/Invoke declarations for setting DPI awareness
+        [DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
+        [DllImport("shcore.dll")]
+        private static extern int SetProcessDpiAwareness(int awareness);
+
+        private const int PROCESS_DPI_UNAWARE = 0;
+        private const int PROCESS_SYSTEM_DPI_AWARE = 1;
+        private const int PROCESS_PER_MONITOR_DPI_AWARE = 2;
+
         [STAThread]
         static void Main()
         {
@@ -31,13 +44,28 @@ namespace ARKBreedingStats
                         break;
                 }
             }
+            // Set DPI Awareness programmatically
+            if (Environment.OSVersion.Version >= new Version(6, 2)) // Windows 8 or later
+            {
+                SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
+            }
+            else
+            {
+                SetProcessDPIAware(); // For older versions of Windows
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1
+
+            // Create and configure the main form
+            Form1 mainForm = new Form1
             {
-                Font = new System.Drawing.Font(Properties.Settings.Default.DefaultFontName, Properties.Settings.Default.DefaultFontSize)
-            });
+                Font = new Font(Properties.Settings.Default.DefaultFontName, Properties.Settings.Default.DefaultFontSize),
+                // Adjust the form's AutoScaleMode for DPI-aware behavior
+                AutoScaleMode = AutoScaleMode.Dpi
+            };
+            
+            Application.Run(mainForm);
         }
 
         private static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs args)

@@ -13,7 +13,6 @@ using ARKBreedingStats.library;
 using ARKBreedingStats.utils;
 using ARKBreedingStats.ocr;
 using ARKBreedingStats.uiControls;
-using System.Reflection;
 
 namespace ARKBreedingStats
 {

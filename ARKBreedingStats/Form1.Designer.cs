@@ -2,6 +2,8 @@
 using ARKBreedingStats.multiplierTesting;
 using ARKBreedingStats.Pedigree;
 using ARKBreedingStats.raising;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ARKBreedingStats
 {
@@ -973,7 +975,7 @@ namespace ARKBreedingStats
             // lbBreedingValueTester
             // 
             this.lbBreedingValueTester.AutoSize = true;
-            this.lbBreedingValueTester.Location = new System.Drawing.Point(270, 0);
+            this.lbBreedingValueTester.Location = new System.Drawing.Point(258, 0);
             this.lbBreedingValueTester.Name = "lbBreedingValueTester";
             this.lbBreedingValueTester.Size = new System.Drawing.Size(79, 13);
             this.lbBreedingValueTester.TabIndex = 33;
@@ -1692,7 +1694,26 @@ namespace ARKBreedingStats
             this.rbWildExtractor.CheckedChanged += new System.EventHandler(this.radioButtonWild_CheckedChanged);
             // 
             // tabControlMain
-            // 
+            //
+            void AdjustTabHeightToText(TabControl tabControl)
+            {
+                int maxHeight = 0;
+                using (Graphics g = tabControl.CreateGraphics())
+                {
+                    foreach (TabPage tabPage in tabControl.TabPages)
+                    {
+                        SizeF textSize = g.MeasureString(tabPage.Text, tabControl.Font);
+                        float scaleFactor = this.DeviceDpi / 96f;
+                        int tabHeight = (int)(textSize.Height + 20*scaleFactor); // Add some padding
+
+                        if (tabHeight > maxHeight)
+                            maxHeight = tabHeight;
+                    }
+                }
+
+                // Set the tab height
+                tabControl.ItemSize = new Size(tabControl.ItemSize.Width, maxHeight);
+            }
             this.tabControlMain.Controls.Add(this.tabPageStatTesting);
             this.tabControlMain.Controls.Add(this.tabPageExtractor);
             this.tabControlMain.Controls.Add(this.tabPageLibrary);
@@ -1715,6 +1736,7 @@ namespace ARKBreedingStats
             this.tabControlMain.Size = new System.Drawing.Size(1878, 810);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            AdjustTabHeightToText(this.tabControlMain);
             // 
             // tabPageStatTesting
             // 
@@ -1752,6 +1774,7 @@ namespace ARKBreedingStats
             this.pictureBoxColorRegionsTester.Location = new System.Drawing.Point(641, 489);
             this.pictureBoxColorRegionsTester.Name = "pictureBoxColorRegionsTester";
             this.pictureBoxColorRegionsTester.Size = new System.Drawing.Size(256, 256);
+            this.pictureBoxColorRegionsTester.SizeMode = PictureBoxSizeMode.Zoom;
             this.pictureBoxColorRegionsTester.TabIndex = 13;
             this.pictureBoxColorRegionsTester.TabStop = false;
             this.pictureBoxColorRegionsTester.Click += new System.EventHandler(this.pictureBoxColorRegionsTester_Click);
@@ -1768,7 +1791,7 @@ namespace ARKBreedingStats
             this.gbStatChart.Controls.Add(this.radarChart1);
             this.gbStatChart.Location = new System.Drawing.Point(641, 9);
             this.gbStatChart.Name = "gbStatChart";
-            this.gbStatChart.Size = new System.Drawing.Size(213, 228);
+            this.gbStatChart.Size = new System.Drawing.Size(213, 232);
             this.gbStatChart.TabIndex = 11;
             this.gbStatChart.TabStop = false;
             this.gbStatChart.Text = "Stat-Chart";
@@ -1776,9 +1799,9 @@ namespace ARKBreedingStats
             // radarChart1
             // 
             this.radarChart1.Image = ((System.Drawing.Image)(resources.GetObject("radarChart1.Image")));
-            this.radarChart1.Location = new System.Drawing.Point(6, 19);
+            this.radarChart1.Location = new System.Drawing.Point(6, 12);
             this.radarChart1.Name = "radarChart1";
-            this.radarChart1.Size = new System.Drawing.Size(200, 200);
+            this.radarChart1.Size = new System.Drawing.Size(200, 218);
             this.radarChart1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.radarChart1.TabIndex = 10;
             this.radarChart1.TabStop = false;
@@ -1840,7 +1863,7 @@ namespace ARKBreedingStats
             // 
             // flowLayoutPanelStatIOsTester
             // 
-            this.flowLayoutPanelStatIOsTester.AutoScroll = true;
+            this.flowLayoutPanelStatIOsTester.AutoScroll = false;
             this.flowLayoutPanelStatIOsTester.Controls.Add(this.panel2);
             this.flowLayoutPanelStatIOsTester.Controls.Add(this.panelStatTesterFootnote);
             this.flowLayoutPanelStatIOsTester.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -2098,6 +2121,7 @@ namespace ARKBreedingStats
             this.PbCreatureColorsExtractor.Location = new System.Drawing.Point(641, 489);
             this.PbCreatureColorsExtractor.Name = "PbCreatureColorsExtractor";
             this.PbCreatureColorsExtractor.Size = new System.Drawing.Size(256, 256);
+            this.PbCreatureColorsExtractor.SizeMode = PictureBoxSizeMode.Zoom;
             this.PbCreatureColorsExtractor.TabIndex = 51;
             this.PbCreatureColorsExtractor.TabStop = false;
             this.PbCreatureColorsExtractor.Click += new System.EventHandler(this.PbCreatureColorsExtractor_Click);
@@ -2199,7 +2223,7 @@ namespace ARKBreedingStats
             this.panel1.Controls.Add(this.lbExtractorDomLevel);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 17);
+            this.panel1.Size = new System.Drawing.Size(346, 17);
             this.panel1.TabIndex = 53;
             // 
             // label5
@@ -3043,7 +3067,6 @@ namespace ARKBreedingStats
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(195, 772);
             this.tableLayoutPanel1.TabIndex = 6;

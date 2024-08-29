@@ -41,8 +41,14 @@ namespace ARKBreedingStats.uiControls
             _breedingValue = 0;
             groupBox1.Click += groupBox1_Click;
             InputType = _inputType;
+            // Initialize the height to 50, because otherwise in the Stat Tester,
+            // a random value that's a bit small is automatically picked
+            // Get the current DPI of the UserControl
+            float dpiFactor = this.DeviceDpi / 96f;
+            // Scale the height value based on the DPI factor
+            Height = (int)(55 * dpiFactor);
             // ToolTips
-            _tt = new ToolTip { InitialDelay = 300 };
+        _tt = new ToolTip { InitialDelay = 300 };
             _tt.SetToolTip(checkBoxFixDomZero, "Check to lock to zero (if you never leveled up this stat)");
         }
 
@@ -263,7 +269,11 @@ namespace ARKBreedingStats.uiControls
         {
             set
             {
-                Height = value ? 50 : 16;
+                // Get the current DPI of the UserControl
+                float dpiFactor = this.DeviceDpi / 96f;
+
+                // Scale the height values based on the DPI factor
+                Height = value ? (int)(55 * dpiFactor) : (int)(16 * dpiFactor);
                 Enabled = value;
             }
             get => Enabled;
@@ -392,6 +402,11 @@ namespace ARKBreedingStats.uiControls
         {
             _domZeroFixed = checkBoxFixDomZero.Checked;
             checkBoxFixDomZero.Image = (_domZeroFixed ? Properties.Resources.locked : Properties.Resources.unlocked);
+            // Rescale button image size according to DPI
+            float scaleFactor = this.DeviceDpi / 96f;
+            int width = (int)(this.checkBoxFixDomZero.Image.Width * scaleFactor);
+            int height = (int)(this.checkBoxFixDomZero.Image.Height * scaleFactor);
+            this.checkBoxFixDomZero.Image = new Bitmap(this.checkBoxFixDomZero.Image, new Size(width, height));
         }
 
         public bool DomLevelLockedZero

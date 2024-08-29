@@ -1,4 +1,6 @@
-﻿namespace ARKBreedingStats.uiControls
+﻿using System.Drawing;
+
+namespace ARKBreedingStats.uiControls
 {
     partial class StatIO
     {
@@ -72,7 +74,7 @@
             // 
             this.panelBarDomLevels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panelBarDomLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBarDomLevels.Location = new System.Drawing.Point(6, 44);
+            this.panelBarDomLevels.Location = new System.Drawing.Point(6, 48);
             this.panelBarDomLevels.Name = "panelBarDomLevels";
             this.panelBarDomLevels.Size = new System.Drawing.Size(2, 3);
             this.panelBarDomLevels.TabIndex = 5;
@@ -81,7 +83,7 @@
             // 
             this.panelBarMutLevels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panelBarMutLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBarMutLevels.Location = new System.Drawing.Point(6, 41);
+            this.panelBarMutLevels.Location = new System.Drawing.Point(6, 44);
             this.panelBarMutLevels.Name = "panelBarMutLevels";
             this.panelBarMutLevels.Size = new System.Drawing.Size(2, 4);
             this.panelBarMutLevels.TabIndex = 6;
@@ -123,7 +125,12 @@
             // 
             this.checkBoxFixDomZero.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxFixDomZero.Image = global::ARKBreedingStats.Properties.Resources.unlocked;
-            this.checkBoxFixDomZero.Location = new System.Drawing.Point(251, 9);
+            // Rescale button image based on the DPI factor
+            float scaleFactor = this.DeviceDpi / 96f;
+            int width = (int)(this.checkBoxFixDomZero.Image.Width * scaleFactor);
+            int height = (int)(this.checkBoxFixDomZero.Image.Height * scaleFactor);
+            this.checkBoxFixDomZero.Image = new Bitmap(this.checkBoxFixDomZero.Image, new Size(width, height));
+            this.checkBoxFixDomZero.Location = new System.Drawing.Point(251, 4);
             this.checkBoxFixDomZero.Name = "checkBoxFixDomZero";
             this.checkBoxFixDomZero.Size = new System.Drawing.Size(14, 17);
             this.checkBoxFixDomZero.TabIndex = 12;

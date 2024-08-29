@@ -411,8 +411,7 @@ namespace ARKBreedingStats
 
         private int SpeciesImageIndex(string speciesName = null)
         {
-            if (_iconIndices == null) return -1;
-
+            if (_iconIndices == null || _iconIndices.Count == 0) return -1;
             if (string.IsNullOrWhiteSpace(speciesName))
                 speciesName = SelectedSpecies.name;
             else speciesName = Values.V.SpeciesName(speciesName);

@@ -33,39 +33,43 @@
             this.labelWildLevels = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+
             // 
-            // labelDomLevels
-            // 
-            this.labelDomLevels.BackColor = System.Drawing.Color.Gold;
-            this.labelDomLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelDomLevels.Location = new System.Drawing.Point(286, 0);
-            this.labelDomLevels.Name = "labelDomLevels";
-            this.labelDomLevels.Size = new System.Drawing.Size(92, 23);
-            this.labelDomLevels.TabIndex = 3;
-            this.labelDomLevels.Text = "label3";
-            this.labelDomLevels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // labelWildLevels
+            //
+            this.labelWildLevels.BackColor = System.Drawing.Color.LightCoral;
+            this.labelWildLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelWildLevels.Location = new System.Drawing.Point(25, 0);
+            this.labelWildLevels.Size = new System.Drawing.Size(80, 23);
+            this.labelWildLevels.Name = "labelWildLevels";
+            this.labelWildLevels.TabIndex = 1;
+            this.labelWildLevels.Text = "label1";
+            this.labelWildLevels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+
             // 
             // labelImprinting
             // 
             this.labelImprinting.BackColor = System.Drawing.Color.SkyBlue;
             this.labelImprinting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelImprinting.Location = new System.Drawing.Point(165, 0);
+            this.labelImprinting.Location = new System.Drawing.Point(labelWildLevels.Right + 3, labelWildLevels.Top);
             this.labelImprinting.Name = "labelImprinting";
-            this.labelImprinting.Size = new System.Drawing.Size(115, 23);
+            this.labelImprinting.Size = new System.Drawing.Size(80, 23);
             this.labelImprinting.TabIndex = 2;
             this.labelImprinting.Text = "label2";
             this.labelImprinting.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+
             // 
-            // labelWildLevels
+            // labelDomLevels
             // 
-            this.labelWildLevels.BackColor = System.Drawing.Color.LightCoral;
-            this.labelWildLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelWildLevels.Location = new System.Drawing.Point(31, 0);
-            this.labelWildLevels.Name = "labelWildLevels";
-            this.labelWildLevels.Size = new System.Drawing.Size(128, 23);
-            this.labelWildLevels.TabIndex = 1;
-            this.labelWildLevels.Text = "label1";
-            this.labelWildLevels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelDomLevels.BackColor = System.Drawing.Color.Gold;
+            this.labelDomLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDomLevels.Location = new System.Drawing.Point(labelImprinting.Right + 3, labelWildLevels.Top);
+            this.labelDomLevels.Name = "labelDomLevels";
+            this.labelDomLevels.Size = new System.Drawing.Size(80, 23);
+            this.labelDomLevels.TabIndex = 3;
+            this.labelDomLevels.Text = "label3";
+            this.labelDomLevels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+
             // 
             // label1
             // 

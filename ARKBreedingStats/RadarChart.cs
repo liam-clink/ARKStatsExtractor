@@ -62,9 +62,9 @@ namespace ARKBreedingStats
                 return false; // already set
 
             _maxR = maxRadius;
-            _xm = _maxR + 1;
-            _ym = _maxR + 1;
-            _maxR -= 15;
+            _xm = Width / 2;
+            _ym = Height / 2 - 1;
+            _maxR -= 30;
 
             InitializePoints();
 
@@ -190,7 +190,7 @@ namespace ARKBreedingStats
             if (species != null)
                 InitializeStats(species.DisplayedStats);
 
-            if (_maxR <= 5 || _ps.Count == 0) return; // image too small
+            if (_maxR <= 5 || _ps.Count == 0) return; // chart too small
 
             Bitmap bmp = new Bitmap(Width, Height);
             using (Graphics g = Graphics.FromImage(bmp))
@@ -299,14 +299,11 @@ namespace ARKBreedingStats
 
                 using (var brush = new SolidBrush(Color.FromArgb(190, 255, 255, 255)))
                 {
-                    for (int r = 1; r < 5; r++)
+                    for (int r = 1; r <= 5; r++)
                     {
                         g.DrawString((_step * r).ToString("N0"), font,
-                            brush, _xm - 8, _ym - 6 + r * _maxR / 5);
+                            brush, _xm - 8, _ym - 30 + r * _maxR / 5);
                     }
-
-                    g.DrawString((_maxLevel).ToString("N0"), font,
-                        brush, _xm - 8, _ym - 11 + _maxR);
                 }
 
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
@@ -316,10 +313,13 @@ namespace ARKBreedingStats
                     for (var sdi = 0; sdi < _displayedStatIndices.Count; sdi++)
                     {
                         var s = _displayedStatIndices[sdi];
+                        string StatName = Utils.StatName(s, true);
+                        // Measure the size of the text to be drawn
+                        SizeF textSize = g.MeasureString(Utils.StatName(s, true), font);
                         double angle = _anglePerStat * sdi - AngleOffset;
-                        g.DrawString(Utils.StatName(s, true), font,
-                            brushBlack, _xm - 9 + (int)((_maxR + 10) * Math.Cos(angle)),
-                            _ym - 5 + (int)((_maxR + 10) * Math.Sin(angle)));
+                        g.DrawString(StatName, font,
+                            brushBlack, _xm - textSize.Width / 2 + (int)((_maxR + 20) * Math.Cos(angle)),
+                            _ym + 3 - textSize.Height / 2 + (int)((_maxR + 20) * Math.Sin(angle)));
                     }
                 }
             }

@@ -30,7 +30,10 @@ namespace ARKBreedingStats.uiControls
             _buttonColors = new NoPaddingButton[Ark.ColorRegionCount];
             for (int i = 0; i < Ark.ColorRegionCount; i++)
             {
-                var b = new NoPaddingButton { Width = 27, Height = 27, Margin = new Padding(1), Text = i.ToString() };
+                var b = new NoPaddingButton {Margin = new Padding(2), Text = i.ToString()};
+                Size textSize = TextRenderer.MeasureText(b.Text, b.Font);
+                b.Height = (int)(textSize.Height * 1.8);
+                b.Width = (int)(textSize.Height * 1.8);
                 var ii = i;
                 b.Click += (s, e) => ChooseColor(ii, b);
                 _buttonColors[i] = b;

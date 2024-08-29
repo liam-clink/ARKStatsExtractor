@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace ARKBreedingStats.uiControls
@@ -11,24 +12,28 @@ namespace ARKBreedingStats.uiControls
 
         public ArkVersionDialog()
         {
+            float scaleFactor = this.DeviceDpi / 96f; // 96 DPI is the base DPI
+
             StartPosition = FormStartPosition.CenterParent;
             Text = Utils.ApplicationNameVersion;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
 
-            const int margin = 20;
-            const int buttonWidth = 160;
-            const int buttonHeight = 50;
+            int margin = (int)(20 * scaleFactor);
+            int buttonWidth = (int)(160 * scaleFactor);
+            int buttonHeight = (int)(50 * scaleFactor);
 
-            Width = 3 * margin + 2 * buttonWidth + 15;
-            Height = 5 * margin + buttonHeight + 30;
+            Width = 3 * margin + 2 * buttonWidth + (int)(15 * scaleFactor);
+            Height = 5 * margin + buttonHeight + (int)(30 * scaleFactor);
 
-            var lb = new Label
+            var lb = new System.Windows.Forms.Label
             {
                 Text = "Game version of new library",
                 Width = Width,
                 TextAlign = ContentAlignment.TopCenter,
-                Top = margin
+                Top = margin,
             };
+            Size textSize = TextRenderer.MeasureText(lb.Text, lb.Font);
+            lb.Height = textSize.Height + 20;
 
             var btAse = new Button
             {

@@ -1,4 +1,6 @@
-﻿namespace ARKBreedingStats
+﻿using System.Windows.Forms;
+
+namespace ARKBreedingStats
 {
     partial class SpeciesSelector
     {
@@ -104,7 +106,7 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -113,7 +115,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(198, 3);
+            this.btCancel.Location = new System.Drawing.Point(198, 0);
             this.btCancel.Name = "btCancel";
             this.tableLayoutPanel2.SetRowSpan(this.btCancel, 2);
             this.btCancel.Size = new System.Drawing.Size(82, 23);
@@ -125,6 +127,7 @@
             // cbDisplayUntameable
             // 
             this.cbDisplayUntameable.AutoSize = true;
+            this.cbDisplayUntameable.Anchor = AnchorStyles.None;
             this.tableLayoutPanel2.SetColumnSpan(this.cbDisplayUntameable, 2);
             this.cbDisplayUntameable.Location = new System.Drawing.Point(3, 3);
             this.cbDisplayUntameable.Name = "cbDisplayUntameable";

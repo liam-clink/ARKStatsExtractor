@@ -55,6 +55,9 @@
   <PropertyGroup>
     <ApplicationIcon>ARKSmartBreeding.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -714,6 +717,7 @@
     <Compile Include="values\Values.cs" />
     <Compile Include="utils\Win32API.cs" />
     <Compile Include="values\ValuesFile.cs" />
+    <None Include="app.manifest" />
     <None Include="json\values\ASA-values.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
